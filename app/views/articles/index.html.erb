@@ -1,0 +1,9 @@
+<% @articles.each do |article| %>
+<h4><small>RECENT POSTS</small></h4>
+<hr>
+<h2><%= article.title %></h2>
+<h5><span>Author: <%= article.user.name %></span></h5><br>
+<p><%= article.text %></p>
+<br><br>
+<%= link_to 'Show', article_path(article), class: 'btn btn-primary btn-xs'  %>
+<% end %>

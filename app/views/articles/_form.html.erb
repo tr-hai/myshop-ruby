@@ -1,0 +1,45 @@
+<%= form_for @article,:html => {:class => "form center"} do |f| %>
+  <% if @article.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@article.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @article.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+  <p>
+    <%= f.label :title , class: "col-md-4 control-label"%><br>
+    <%= f.text_field :title , class: "form-control"%>
+  </p>
+</div>
+<div class="form-group">
+  <p>
+    <%= f.label :text, class: "col-md-4 control-label" %><br>
+    <%= f.text_area :text, class: "form-control" %>
+  </p>
+</div>
+<div class="form-group">
+<p>
+  <%= f.label :image , class: "col-md-4 control-label"%><br>
+  <%= f.file_field :image , class: "form-control"%>
+</p>
+</div>
+<div class="form-group">
+<p>
+  <%= f.label :status , class: "col-md-4 control-label"%><br>
+  <%= f.select :status, options_for_select([["Public", 0], ["Private", 1]])%>
+</p>
+</div>
+<div class="form-group">
+  <p>
+    <%= f.submit nil, class: "btn btn-success" %>
+  </p>
+</div>
+
+<% end %>
